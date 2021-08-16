@@ -10,11 +10,9 @@ class MovieApiProvider {
   final _apiKey = '57e933e840826bf393f52e1a161c019d';
 
   Future<ItemModel> fetchMovieList() async {
-    print('entered');
     final apiUrl =
         Uri.parse('http://api.themoviedb.org/3/movie/popular?api_key=$_apiKey');
     final response = await client.get(apiUrl);
-    print(response.body.toString());
     if (response.statusCode == 200) {
       // If the call to the server was successful, parse the JSON
       return ItemModel.fromJson(json.decode(response.body));
